@@ -9,6 +9,15 @@ errorprint() { printf "${RED}%s${RESET}\n" "$1"; }
 greenprint() { printf "${GREEN}%s${RESET}\n" "$1"; }
 
 
+# ----------------------------------------------------------------------------------------------- #
+
+
+# Проверка запуска через sudo
+if [ -z "$SUDO_USER" ]; then
+    errorprint "Пожалуйста, запустите скрипт через sudo."
+    exit 1
+fi
+
 # Функция для установки Git на Ubuntu
 install_git_ubuntu() {
     echo; magentaprint "Installing Git on Ubuntu..."
